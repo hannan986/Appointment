@@ -1,7 +1,13 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm --version)"
+      "Bash(npm --version)",
+      "Bash(npm install:*)",
+      "Bash(npx prisma:*)",
+      "Bash(node -e \"const { PrismaBetterSQLite3 } = require\\('@prisma/adapter-better-sqlite3'\\); console.log\\('ok'\\)\")",
+      "Bash(npx tsx:*)",
+      "Bash(node -e \"const m = require\\('@prisma/adapter-better-sqlite3'\\); console.log\\(Object.keys\\(m\\)\\)\")",
+      "Bash(grep -E \"\\\\.db$\")"
     ]
   }
 }
