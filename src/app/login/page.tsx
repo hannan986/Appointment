@@ -104,7 +104,6 @@ export default function LoginPage() {
             </button>
           </form>
 
-          <div className="mt-6 p-4 bg-blue-50 rounded-xl border border-blue-100">
           </div>
 
           <p className="mt-6 text-center text-sm text-gray-500">
