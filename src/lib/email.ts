@@ -1,14 +1,16 @@
 import nodemailer from "nodemailer";
 
-const transporter = nodemailer.createTransport({
-  host: process.env.EMAIL_HOST || "smtp.gmail.com",
-  port: parseInt(process.env.EMAIL_PORT || "587"),
-  secure: false,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-});
+function getTransporter() {
+  return nodemailer.createTransport({
+    host: process.env.EMAIL_HOST || "smtp.gmail.com",
+    port: parseInt(process.env.EMAIL_PORT || "587"),
+    secure: false,
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
+    },
+  });
+}
 
 interface AppointmentEmailData {
   userName: string;
@@ -89,7 +91,7 @@ export async function sendConfirmationEmail(data: AppointmentEmailData) {
   `;
 
   try {
-    await transporter.sendMail({
+    await getTransporter().sendMail({
       from: process.env.EMAIL_FROM || "AppointEase <noreply@appointease.com>",
       to: data.userEmail,
       subject: `✅ Appointment Confirmed – ${data.serviceName} on ${data.date}`,
@@ -135,7 +137,7 @@ export async function sendReminderEmail(data: AppointmentEmailData) {
   `;
 
   try {
-    await transporter.sendMail({
+    await getTransporter().sendMail({
       from: process.env.EMAIL_FROM || "AppointEase <noreply@appointease.com>",
       to: data.userEmail,
       subject: `⏰ Reminder: ${data.serviceName} tomorrow at ${data.startTime}`,
@@ -170,7 +172,7 @@ export async function sendCancellationEmail(data: AppointmentEmailData) {
   `;
 
   try {
-    await transporter.sendMail({
+    await getTransporter().sendMail({
       from: process.env.EMAIL_FROM,
       to: data.userEmail,
       subject: `Appointment Cancelled – ${data.serviceName}`,
