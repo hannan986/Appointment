@@ -105,9 +105,6 @@ export default function LoginPage() {
           </form>
 
           <div className="mt-6 p-4 bg-blue-50 rounded-xl border border-blue-100">
-            <p className="text-xs text-blue-700 font-medium mb-1">Demo Credentials</p>
-            <p className="text-xs text-blue-600">Admin: <span className="font-mono">admin@demo.com / admin123</span></p>
-            <p className="text-xs text-blue-600">User: <span className="font-mono">user@demo.com / user123</span></p>
           </div>
 
           <p className="mt-6 text-center text-sm text-gray-500">
